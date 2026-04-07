@@ -27,8 +27,12 @@
     {
       "id": "dictionary_check",
       "enabled": true,
-      "description": "Prueft den zusammengefuehrten Text gegen ein Woerterbuch und korrigiert moegliche OCR-Fehler.",
+      "description": "Prueft den Text mit Hunspell (deutsch) und rankt Korrekturen zusaetzlich mit wordfreq.",
       "params": {
+        "hunspell_aff": "resources/hunspell/de_DE_frami.aff",
+        "hunspell_dic": "resources/hunspell/de_DE_frami.dic",
+        "wordfreq_language": "de",
+        "min_similarity": 0.75,
         "dictionary_file": "resources/de_dictionary_sample.txt",
         "cutoff": 0.85
       }

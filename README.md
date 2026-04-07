@@ -54,6 +54,7 @@ python run.py run --pdf ./input/mein_dokument.pdf --output ./output --config ./p
 
 - `scan_a`: OCR-Methode. Das PDF wird als Bild gerendert und mit Tesseract gelesen.
 - `scan_b`: Schnelle Methode. Direkte Textextraktion aus dem PDF-Textlayer.
+- `dictionary_check`: Nutzt bevorzugt Hunspell (`spylls`) fuer Deutsch und `wordfreq` zum Ranken von Vorschlaegen.
 
 Damit bekommst du zwei unterschiedliche Quellen fuer den spaeteren Abgleich.
 
@@ -90,6 +91,10 @@ Beispiel (gekuerzt):
 			"id": "dictionary_check",
 			"enabled": true,
 			"params": {
+				"hunspell_aff": "resources/hunspell/de_DE.aff",
+				"hunspell_dic": "resources/hunspell/de_DE.dic",
+				"wordfreq_language": "de",
+				"min_similarity": 0.75,
 				"dictionary_file": "resources/de_dictionary_sample.txt",
 				"cutoff": 0.85
 			}
@@ -106,6 +111,11 @@ Beispiel (gekuerzt):
 	]
 }
 ```
+
+Hinweis zu Woerterbuchdateien:
+
+- Lege ein deutsches Hunspell-Woerterbuch als `de_DE.aff` und `de_DE.dic` unter `resources/hunspell/` ab.
+- Wenn Hunspell nicht verfuegbar ist, faellt der Step automatisch auf `dictionary_file` zurueck.
 
 ## Neue Methoden hinzufuegen
 
