@@ -1,0 +1,47 @@
+{
+  "steps": [
+    {
+      "id": "scan_a",
+      "enabled": true,
+      "description": "OCR-Methode: rendert PDF-Seiten als Bilder und liest Text mit Tesseract.",
+      "params": {
+        "ocr_language": "deu+eng",
+        "ocr_dpi": 300,
+        "use_sidecar_fallback": true
+      }
+    },
+    {
+      "id": "scan_b",
+      "enabled": true,
+      "description": "Schnelle Methode: extrahiert direkt den vorhandenen Textlayer aus dem PDF.",
+      "params": {
+        "use_sidecar_fallback": true
+      }
+    },
+    {
+      "id": "reconcile_scans",
+      "enabled": true,
+      "description": "Gleicht Scan A und Scan B ab und erstellt daraus einen zusammengefuehrten Text.",
+      "params": {}
+    },
+    {
+      "id": "dictionary_check",
+      "enabled": true,
+      "description": "Prueft den zusammengefuehrten Text gegen ein Woerterbuch und korrigiert moegliche OCR-Fehler.",
+      "params": {
+        "dictionary_file": "resources/de_dictionary_sample.txt",
+        "cutoff": 0.85
+      }
+    },
+    {
+      "id": "export_epub",
+      "enabled": true,
+      "description": "Exportiert den finalen (korrigierten) Text als EPUB-Datei.",
+      "params": {
+        "title": "Mein Buch",
+        "author": "Unbekannt",
+        "output_file": "mein_buch.epub"
+      }
+    }
+  ]
+}

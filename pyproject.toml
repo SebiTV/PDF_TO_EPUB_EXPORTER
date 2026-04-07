@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-to-epub-exporter"
+version = "0.1.0"
+description = "Modular PDF to EPUB exporter with pluggable processing steps"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pypdf>=4.2.0",
+    "pypdfium2>=4.30.0",
+    "pytesseract>=0.3.10",
+    "pillow>=10.0.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+pdf2epub = "pdf_to_epub_exporter.cli:main"
