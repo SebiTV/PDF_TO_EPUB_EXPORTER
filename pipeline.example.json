@@ -7,7 +7,9 @@
       "params": {
         "ocr_language": "deu+eng",
         "ocr_dpi": 300,
-        "use_sidecar_fallback": true
+        "use_sidecar_fallback": true,
+        "write_raw_log_file": true,
+        "raw_log_file": "mein_buch.scan_a.raw.txt"
       }
     },
     {
@@ -15,7 +17,9 @@
       "enabled": true,
       "description": "Schnelle Methode: extrahiert direkt den vorhandenen Textlayer aus dem PDF.",
       "params": {
-        "use_sidecar_fallback": true
+        "use_sidecar_fallback": true,
+        "write_raw_log_file": true,
+        "raw_log_file": "mein_buch.scan_b.raw.txt"
       }
     },
     {
@@ -33,8 +37,13 @@
         "hunspell_dic": "resources/hunspell/de_DE_frami.dic",
         "wordfreq_language": "de",
         "min_similarity": 0.75,
+        "use_wordfreq_ranking": true,
+        "max_suggestions_to_score": 20,
         "dictionary_file": "resources/de_dictionary_sample.txt",
-        "cutoff": 0.85
+        "cutoff": 0.85,
+        "log_top_corrections": 20,
+        "write_log_file": true,
+        "log_file": "mein_buch.dictionary_check.log.txt"
       }
     },
     {
@@ -45,6 +54,14 @@
         "title": "Mein Buch",
         "author": "Unbekannt",
         "output_file": "mein_buch.epub"
+      }
+    },
+    {
+      "id": "export_txt",
+      "enabled": true,
+      "description": "Exportiert den finalen (korrigierten) Text als TXT-Datei.",
+      "params": {
+        "output_file": "mein_buch.txt"
       }
     }
   ]
